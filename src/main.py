@@ -1,8 +1,8 @@
 from linux import wifi
 
 def main():
-    print("We're working on it")
-    print (wifi.getWifiList())
+    
+    print (wifi.scan_wifi())
 
 if __name__ == "__main__":
     main()
