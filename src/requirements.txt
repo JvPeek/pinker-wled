@@ -1,6 +1,10 @@
+comtypes==1.4.8; sys_platform == 'win32'
 dataclasses-json==0.6.7
 marshmallow==3.23.2
 mypy-extensions==1.0.0
 packaging==24.2
+plumbum==1.9.0; sys_platform == 'win32'
+pywin32==308; sys_platform == 'win32'
 typing-inspect==0.9.0
 typing_extensions==4.12.2
+winwifi==1.0.5; sys_platform == 'win32'
