@@ -1,6 +1,7 @@
 from typing import Any
 from pprint import pprint
 from dataclasses import dataclass
+from dataclasses_json import dataclass_json
 from json import JSONDecodeError
 
 import random
@@ -57,3 +58,5 @@ class FileHandler:
 
     def getNetworks(self) -> list[WifiNetworks]:
         return self.networks
+    def addNetwork(self, networkObject):
+        self.networks.append(networkObject)
