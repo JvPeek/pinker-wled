@@ -3,6 +3,9 @@ import json
 import time
 from threading import Thread  # Import the threading module
 from modules import FileHandler
+from modules import wled
+
+
 if platform.system() == 'Linux':
     from linux import wifi
 elif platform.system() == 'Windows':
@@ -14,16 +17,28 @@ elif platform.system() == 'MacOS':
 def scanThreadFunction():
     while True:
         print(wifi.scan_wifi())
-        time.sleep(10)
+        time.sleep(1)
+
+
+def connectorThreadFunction():
+    while True:
+        wifi.connect_wifi("WLED-AP-Penis","EA:9F:6D:93:C1:2F", "wled1234")
+        wled.make_request()
+        time.sleep(1)
 
 def main():
-    
-      # Start the exampleFunction as a thread
+      
     scanThread = Thread(target=scanThreadFunction)
+    scanThread.daemon = True
     scanThread.start()
 
-    # Join the thread if you want to wait for it to finish
-    scanThread.join()
+
+    connectorThread = Thread(target=connectorThreadFunction)
+    connectorThread.daemon = True
+    connectorThread.start()
+    while True:
+
+        continue
 
 if __name__ == "__main__":
     main()
