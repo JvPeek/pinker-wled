@@ -20,6 +20,8 @@ wifi_networks = [
 
 ]
 def connect_wifi(essid, bssid, password=None):
+    subprocess.run(["nmcli", "con", "delete", essid ], capture_output=True, text=True)
+
     command = ["nmcli", "dev", "wifi", "connect", essid, "bssid", bssid]
     if password:
         command.extend(["password", password])
@@ -43,8 +45,8 @@ def scan_wifi():
             bssid = ":".join(parts[1:7]).replace("\\:", ":")  # Ensure full BSSID is reconstructed
             encryption = parts[7]
             
-            #if ("WLED" in ssid):
-            parsed_networks.append({"essid": ssid, "bssid": bssid, "encryption": encryption != "OWE-TM"})
+            if ("WLED" in ssid):
+                parsed_networks.append({"essid": ssid, "bssid": bssid, "encryption": encryption != "OWE-TM"})
             
     return parsed_networks
     
