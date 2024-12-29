@@ -33,7 +33,8 @@ def scan_wifi():
             bssid = ":".join(parts[1:7]).replace("\\:", ":")  # Ensure full BSSID is reconstructed
             encryption = parts[7]
             
-            parsed_networks.append({"essid": ssid, "bssid": bssid, "encryption": encryption})
+            
+            parsed_networks.append({"essid": ssid, "bssid": bssid, "encryption": encryption != "OWE-TM"})
             
     return parsed_networks
     
