@@ -1,6 +1,7 @@
 import platform
 import json
 import time
+import sys
 from threading import Thread  # Import the threading module
 from modules import FileHandler
 if platform.system() == 'Linux':
@@ -20,6 +21,7 @@ def main():
     
       # Start the exampleFunction as a thread
     scanThread = Thread(target=scanThreadFunction)
+    scanThread.daemon = True
     scanThread.start()
 
     # Join the thread if you want to wait for it to finish
