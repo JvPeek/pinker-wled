@@ -117,7 +117,7 @@ def connect_wifi(essid, bssid, password=None):
         </WLANProfile>"
 
     file = open("tmp.xml", "w")
-    if password:
+    if password != None:
         file.write(config_string_wap2)
     else:
         file.write(config_string_open)
@@ -158,7 +158,6 @@ def connect_wifi(essid, bssid, password=None):
     #     print(result.stdout)
     # except subprocess.CalledProcessError as e:
     #     print("Error occurred while deleting profile:", e)
-    
 
 if __name__ == "__main__":
     # scan_wifi()
